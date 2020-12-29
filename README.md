@@ -1,24 +1,77 @@
-# README
+# furima-33031のER図
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
+| Column     | Type   | Option      | 
+| ---------- | ------ | ----------- | 
+| nickname   | string | null: false | 
+| email      | string | null: false | 
+| password   | string | null: false | 
+| last_name  | string | null: false | 
+| first_name | string | null: false | 
+| birthday   | date   | null: false | 
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+- has_many :items
+- has_many :comments
+- has_many :orders
 
-* System dependencies
+## itemsテーブル
+| Column           | Type       | Option      | 
+| ---------------- | ---------- | ----------- | 
+| image            | string     | null: false | 
+| item_name        | string     | null: false | 
+| item_text        | text       | null: false | 
+| category_id      | integer    | null: false | 
+| status_id        | integer    | null: false | 
+| delivery_id      | integer    | null: false | 
+| area_id          | integer    | null: false | 
+| delivery_days_id | integer    | null: false | 
+| price            | integer    | null: false | 
+| user_id          | references |             | 
 
-* Configuration
+### Association
 
-* Database creation
+- has_many :comments
+- belongs_to :user
+- has_one :order
 
-* Database initialization
+## ordersテーブル
+| Column  | Type       | Option      | 
+| ------- | ---------- | ----------- | 
+| user_id | references |             | 
+| item_id | references |             | 
+| token   | text       | null: false | 
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :item
+- belongs_to :user
+- has_one :address
 
-* Deployment instructions
+## addressesテーブル
+| Column        | Type       | Option      | 
+| ------------- | ---------- | ----------- | 
+| postcode      | integer    | null: false | 
+| prefecture_id | integer    | null: false | 
+| city          | string     | null: false | 
+| block         | string     | null: false | 
+| building      | string     |             | 
+| phone_number  | integer    | null: false | 
+| oder_id       | references |             | 
 
-* ...
+### Association
+
+- belongs_to :order
+
+## commentsテーブル
+| Column  | Type       | Option      | 
+| ------- | ---------- | ----------- | 
+| text    | string     | null: false | 
+| user_id | references |             | 
+| item_id | references |             | 
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
