@@ -21,8 +21,8 @@
 ## itemsテーブル
 | Column           | Type       | Option            | 
 | ---------------- | ---------- | ----------------- | 
-| item_name        | string     | null: false       | 
-| item_text        | text       | null: false       | 
+| name             | string     | null: false       | 
+| text             | text       | null: false       | 
 | category_id      | integer    | null: false       | 
 | status_id        | integer    | null: false       | 
 | delivery_id      | integer    | null: false       | 
@@ -58,7 +58,7 @@
 | block         | string     | null: false       | 
 | building      | string     |                   | 
 | phone_number  | string     | null: false       | 
-| oder          | references | foreign_key: true | 
+| order         | references | foreign_key: true | 
 
 ### Association
 
