@@ -11,11 +11,6 @@ RSpec.describe User, type: :model do
           firstname、last_name_kana、first_name_kana、birthdayが存在すれば登録できる" do
         expect(@user).to be_valid
       end
-      it 'passwordが6文字以上の半角英数混合であれば登録できる' do
-        @user.password = "aaa000"
-        @user.password_confirmation = "aaa000"
-        expect(@user).to be_valid
-      end
     end
 
     context '新規登録がうまくいかないとき' do
