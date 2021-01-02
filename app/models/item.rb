@@ -9,8 +9,8 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :image
-    validates :name, length: { maximum 40 }
-    validates :text, length: { maximum 1000 }
+    validates :name, length: { maximum: 40 }
+    validates :text, length: { maximum: 1000 }
     validates :price, numericality: { only_integer: true, message: "is invalid. Input half-width characters." }
   end
   with_options numericality: { other_than: 0, message: "can't be blank" } do
