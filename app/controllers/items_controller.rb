@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    # authenticate_user!
+    authenticate_user!
     @item = Item.new
   end
 
