@@ -11,7 +11,7 @@ class Item < ApplicationRecord
     validates :image
     validates :name, length: { maximum: 40 }
     validates :text, length: { maximum: 1000 }
-    validates :price, numericality: { only_integer: true, message: "is invalid. Input half-width characters." }
+    validates :price, numericality: { only_integer: true, message: 'is invalid. Input half-width characters.' }
   end
   with_options numericality: { other_than: 0, message: "can't be blank" } do
     validates :prefecture_id
@@ -20,6 +20,6 @@ class Item < ApplicationRecord
     validates :delivery_id
     validates :delivery_days_id
   end
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" }
-
+  validates :price,
+            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
 end
