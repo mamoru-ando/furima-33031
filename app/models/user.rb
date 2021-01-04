@@ -15,7 +15,7 @@ class User < ApplicationRecord
     validates :last_name_kana, format: { with: /\A[ァ-ヶ一-]+\z/, message: 'には全角カタカナを使用してください' }
     validates :first_name_kana, format: { with: /\A[ァ-ヶ一-]+\z/, message: 'には全角カタカナを使用してください' }
     validates :birthday
-    VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+    VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
     validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください' }
   end
 end
