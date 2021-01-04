@@ -64,12 +64,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include 'Price is invalid. Input half-width characters.'
       end
       it 'priceが299以下だと登録できない' do
-        @item.price = '200'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include 'Price is out of setting range'
       end
       it 'priceが10000000以上だと登録できない' do
-        @item.price = '10000001'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include 'Price is out of setting range'
       end
