@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # binding.pry
     @item = Item.find(params[:id])
   end
 
@@ -36,7 +35,6 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to item_path
     else
-      # binding.pry
       render :edit
     end
   end
