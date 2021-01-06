@@ -16,7 +16,6 @@ class OrdersController < ApplicationController
       @user_order.save
       return redirect_to root_path
     else
-    #  binding.pry
       render :index
     end
   end
@@ -33,7 +32,7 @@ class OrdersController < ApplicationController
     Payjp::Charge.create(
       amount: @item.price,
       card: order_params[:token],
-      currency: 'jpy'                 # 通貨の種類（日本円）
+      currency: 'jpy'  
     )
   end
 
