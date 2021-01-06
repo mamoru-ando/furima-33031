@@ -1,6 +1,6 @@
 class UserOrder
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postcode, :prefecture_id, :city, :block, :building, :phone_number
+  attr_accessor :user_id, :item_id, :postcode, :prefecture_id, :city, :block, :building, :phone_number, :token, :item_price
 
   with_options presence: true do
     # validates :token
@@ -12,7 +12,7 @@ class UserOrder
   validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
 
   def save
-    binding.pry
+    # binding.pry
     # 購入の情報を保存
     order = Order.create(item_id: item_id, user_id: user_id)
     # 住所の情報を保存
