@@ -3,7 +3,7 @@ class UserOrder
   attr_accessor :user_id, :item_id, :postcode, :prefecture_id, :city, :block, :building, :phone_number, :token, :item_price
 
   with_options presence: true do
-    # validates :token
+    validates :token
     validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/, message: "ハイフンを入れて下さい"}
     validates :city
     validates :block

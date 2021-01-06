@@ -9,9 +9,9 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     @user_order = UserOrder.new(order_params)
     if @user_order.valid?
-    # binding.pry
+      pay_item
       @user_order.save
-      redirect_to root_path
+      return redirect_to root_path
     else
     #  binding.pry
       render :index
@@ -23,5 +23,14 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:user_order).permit(:postcode, :prefecture_id, :city, :block, :building, :phone_number)
                                   .merge(user_id: current_user.id, item_id: @item.id, token: params[:token], item_price: @item.price)
-    end
+  end
+  
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,  # 商品の値段
+      card: order_params[:token],    # カードトークン
+      currency: 'jpy'                 # 通貨の種類（日本円）
+    )
+  end
 end
