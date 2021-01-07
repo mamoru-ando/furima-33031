@@ -32,7 +32,7 @@ RSpec.describe UserOrder, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include('Postcode ハイフンを入れて下さい')
       end
-      it 'prefectureが空では購入できないこと' do
+      it 'prefectureが0以外でないと購入できないこと' do
         @order.prefecture_id = 0
         @order.valid?
         expect(@order.errors.full_messages).to include("Prefecture can't be blank")
