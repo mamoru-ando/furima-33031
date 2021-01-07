@@ -7,7 +7,5 @@ FactoryBot.define do
     block           { '二俣川1ー1ー1' }
     building        { 'ｍｍビル' }
     phone_number    { Faker::Number.leading_zero_number(digits: 11) }
-    user_id         { 1 }
-    item_id         { 1 }
   end
 end
